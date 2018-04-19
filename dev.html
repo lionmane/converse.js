@@ -40,7 +40,7 @@
                         <h1 class="brand-heading"><i class="icon-conversejs"></i>converse</h1>
                         <p class="intro-text">Developer page.</p>
                         <p class="intro-text">
-                            Converse.js will only work on this page if you have 
+                            Converse.js will only work on this page if you have
                             <a href="https://conversejs.org/docs/html/development.html">set up the development environment</a>.
                         </p>
                     </div>
@@ -52,7 +52,29 @@
 
 <script>
     require(['converse'], function (converse) {
+
         converse.initialize({
+            auto_login: true,
+            auto_reconnect: true,
+            allow_muc_invitations: false,
+            allow_otr: true,
+            auto_list_rooms: true,
+            jid: 'chat_user@bitcoinlive',
+            password:'$2y$10$.CERV2f7O52Gaph.SwuRW.urGCjF3np86vkpaqTuC8LWBw3t9MpvC',
+            websocket_url: 'ws://bitlive.lionmane.com:5280/ws',
+            muc_domain: 'conference.bitcoinlive',
+            muc_nickname_from_jid: true,
+            hide_open_bookmarks: true,
+            hide_muc_server: true,
+            locked_domain: true,
+            auto_join_rooms: [
+            {
+                'jid': 'commmunity@conference.bitcoinlive'
+            }
+        ]
+    });
+
+        /*converse.initialize({
             auto_away: 300,
             i18n: 'en',
             // auto_join_rooms: [
@@ -74,7 +96,7 @@
             chatstate_notification_blacklist: ['mulles@movim.eu'],
             xhr_user_search: false,
             debug: true
-        });
+        });*/
     });
 </script>
 </html>
