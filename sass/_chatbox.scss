@@ -9,7 +9,7 @@
             border-radius: 0;
         }
         bottom: $chatbox-hover-height;
-        position: absolute;
+        //position: absolute;
 
         @media screen and (max-height: $mobile-landscape-height) {
             bottom: 0;
@@ -101,7 +101,7 @@
 
     .chatbox {
         text-align: left;
-        margin: 0 $chat-gutter;
+        //margin: 0 $chat-gutter;
 
         @media screen and (max-height: $mobile-landscape-height) {
             margin: 0;
@@ -121,11 +121,12 @@
             flex-direction: column;
             justify-content: space-between;
             background-color: $chat-head-color;
-            box-shadow: 1px 3px 5px 3px rgba(0, 0, 0, 0.4);
+            //box-shadow: 1px 3px 5px 3px rgba(0, 0, 0, 0.4);
             height: $chat-height;
             min-height: $chat-height/2;
+            height: 100%;
             z-index: 1;
-            overflow-y: scroll;
+            overflow-y: auto;
             width: 100%;
 
             @media screen and (max-height: $mobile-landscape-height) {
@@ -175,12 +176,13 @@
                 padding: 5px;
             }
             .message {
-                margin: 0.5em 0;
+                margin: 1.5em 0;
             }
             .chat-info {
                 line-height: $line-height-small;
                 color: $chat-head-color;
                 font-size: $font-size-small;
+                font-weight: 300;
                 &.badge {
                     color: $chat-head-text-color;
                 }
@@ -193,7 +195,7 @@
                 }
                 &.chat-error {
                     color: $warning-color;
-                    font-weight: bold;
+                    font-weight: 400;
                 }
                 &.chat-date {
                     display: inline-block;
@@ -223,7 +225,7 @@
                 }
 
                 .chat-msg-author {
-                    font-weight: bold;
+                    font-weight: 300;
                 }
                 .chat-msg-them {
                     color: $message-them-color;
@@ -269,7 +271,7 @@
         .chat-content {
             height: 100%;
             padding: 1em;
-            font-size: 13px;
+            font-size: $font-size;
             color: $text-color;
             overflow-y: auto;
             border: 0;

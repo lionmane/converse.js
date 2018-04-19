@@ -48,13 +48,19 @@ body.reset {
     direction: ltr;
     display: block;
     z-index: 1031; // One more than bootstrap navbar
+    background: white;
+    height: 100vh;
+    width: $container-width;
+    position: fixed;
+    top: 0;
+    right: 0;
 
     .converse-chatboxes {
-        z-index: 1031; // One more than bootstrap navbar
-        position: fixed;
-        bottom: 0;
-        height: 2.7rem;
-        right: 0;
+        //z-index: 1031; // One more than bootstrap navbar
+        //position: fixed;
+        //top: 0;
+        //height: 2.7rem;
+        //right: 0;
     }
 
     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

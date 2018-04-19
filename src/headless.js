@@ -13,9 +13,9 @@ if (typeof define !== 'undefined') {
          */
         "converse-chatboxes",   // Backbone Collection and Models for chat boxes
         "converse-disco",       // Service discovery plugin
-        "converse-mam",         // XEP-0313 Message Archive Management
-        "converse-ping",        // XEP-0199 XMPP Ping
-        "converse-vcard",       // XEP-0054 VCard-temp
+        //"converse-mam",         // XEP-0313 Message Archive Management
+        //"converse-ping",        // XEP-0199 XMPP Ping
+        //"converse-vcard",       // XEP-0054 VCard-temp
         /* END: Removable components */
     ], function(converse) {
         return converse;

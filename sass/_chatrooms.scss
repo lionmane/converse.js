@@ -9,6 +9,19 @@
 
     .chat-head-chatroom {
         background-color: $chatroom-head-color;
+        font-weight: 300;
+        border-bottom: 1px solid #eee;
+        margin-left: 2rem;
+
+        hr.title-separator{
+            width: 5rem;
+            border: 2.5px solid #0060DA;
+            margin: 0;
+            padding: 0 0 0 2rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
 
         .chatroom-topic {
             white-space: nowrap;
@@ -33,15 +46,16 @@
             }
         }
         .chat-title {
-            color: $chatroom-color-lightest;
+            color: $chatroom-color-dark;
             .chatroom-name {
-                color: white;
+                color: black;
+                text-transform: capitalize;
             }
             .chatroom-jid {
                 font-size: $font-size-small;
             }
             .chatroom-description {
-                color: white;
+                color: #333;
                 font-size: 80%;
                 font-style: italic;
                 overflow: hidden;
@@ -83,18 +97,20 @@
                 background-color: white;
                 border-top: 0;
                 width: 100%;
-                overflow: hidden;
+                font-weight: 200;
+                //overflow: hidden;
 
                 .row {
                     flex-direction: row;
                 }
                 .chat-topic {
                     font-weight: bold;
-                    color: $chatroom-head-color;
+                    color: $chatroom-color-light;
                 }
                 .chat-info {
-                    color: $chatroom-head-color;
+                    color: $chatroom-color-light;
                     line-height: normal;
+                    font-weight: 200;
                     &.badge {
                         color: $chat-head-text-color;
                     }
@@ -103,6 +119,7 @@
                     font-weight: bold;
                 }
                 .chat-message {
+                    font-weight: 200;
                     &.onload {
                         animation: colorchange-chatmessage-muc 1s;
                         -webkit-animation: colorchange-chatmessage-muc 1s;
@@ -125,7 +142,7 @@
                 .chat-area {
                     display: flex;
                     flex-direction: column;
-                    word-wrap: break-word; 
+                    word-wrap: break-word;
                     min-width: $chat-width;
                     .new-msgs-indicator {
                         background-color: $chatroom-head-color;
@@ -133,7 +150,8 @@
                     }
                     .chat-content {
                         height: 100%;
-                        padding: 0.5em;
+                        padding: 0.5em 0;
+                        margin-left: 2rem;
                     }
                     &.full {
                         min-width: 100%;
@@ -281,7 +299,7 @@
 
         .sendXMPPMessage {
             .chat-toolbar {
-                background-color: white;
+                background-color: #aaa;
                 border-top: 8px solid $chatroom-head-color;
                 color: $chatroom-head-color;
                 .fa, .fa:hover {

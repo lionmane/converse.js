@@ -54,7 +54,7 @@
             background-color: white;
         }
 
-        margin-right: 3*$chat-gutter;
+        //margin-right: 3*$chat-gutter;
 
         &.logged-out {
             .box-flyout {
@@ -150,7 +150,7 @@
             .brand-heading {
                 text-align: center;
             }
-            
+
             .brand-name {
                 font-size: 120%;
             }
@@ -420,10 +420,11 @@
         border-top-left-radius: $button-border-radius;
         border-top-right-radius: $button-border-radius;
         color: #0a0a0a;
-        float: right;
-        height: 100%;
-        margin: 0 $chat-gutter;
-        padding: 1em;
+        padding: 0.25em 0.5em;
+        z-index: 1035;
+        position: absolute;
+        bottom: 0;
+        right: 0;
         span {
             color: $inverse-link-color;
         }
@@ -447,7 +448,7 @@
                 font-size: 14px;
             }
 
-            .chatbox { 
+            .chatbox {
                 .box-flyout {
                     left: 0;
                     bottom: 0;

@@ -52,7 +52,7 @@ $chat-textarea-height: 60px !default;
 $send-button-height: 27px !default;
 $send-button-margin: 3px !default;
 
-$message-them-color: $green !default;
+$message-them-color: #333 !default;
 
 $roster-height: 194px !default;
 $roster-item-height: 60px !default;
@@ -85,7 +85,7 @@ $info-color: $dark-green !default;
 $rounded-border-radius: 4px !default;
 
 $button-border-radius: 5px !default;
-$chatbox-border-radius: 4px !default;
+$chatbox-border-radius: 0 !default;
 $bottom-gutter-height: 35px !default;
 $chatbox-hover-height: 1em !default;
 
@@ -94,7 +94,7 @@ $mobile_portrait_length: 480px !default;
 
 $font-size-tiny: 10px !default;
 $font-size-small: 12px !default;
-$font-size: 14px !default;
+$font-size: 13.5px !default;
 $font-size-large: 16px !default;
 $font-size-huge: 20px !default;
 $legend-font-size: 16px !default;
@@ -107,8 +107,9 @@ $line-height-small:  14px !default;
 $line-height:  16px !default;
 $line-height-large:  20px !default;
 
-$controlbox-width: 250px !default;
-$chat-width: 250px !default;
+$container-width: 25rem !default;
+$controlbox-width: 25rem !default;
+$chat-width: 100% !default;
 $chat-height: 450px !default;
 $chat-gutter: 0.5em !default;
 $minimized-chats-width: 130px !default;
@@ -119,11 +120,12 @@ $small-mobile-chat-height: 300px !default;
 
 $font-path: "../fonticons/fonts/" !default;
 
-$chatroom-width: 400px !default;
-$chatroom-head-color: $red !default;
-$chatroom-color-light: $light-red !default;
-$chatroom-color-lightest: $light-red !default;
-$chatroom-color-dark: $darkest-red !default;
+$chatroom-width: 100% !default;
+$chatroom-head-color: white !default;
+$chatroom-color-light: lightgray !default;
+$chatroom-color-lightest: #eee !default;
+$chatroom-color-dark: #333 !default;
+$chatroom-color-darkest: #111 !default;
 $chatroom-message-them-color: $green !default;
 $chatroom-toolbar-color: $reddish-white !default;
 
