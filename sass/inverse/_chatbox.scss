@@ -38,7 +38,8 @@
 
         .box-flyout {
             background-color: $chat-head-color;
-            height: 100vh;
+            //height: 100vh;
+            height:100%;
             width: 100%;
             box-shadow: none;
         }

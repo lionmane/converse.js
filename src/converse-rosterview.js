@@ -21,7 +21,7 @@
             "converse-modal"
     ], factory);
 }(this, function (
-            converse, 
+            converse,
             tpl_add_contact_modal,
             tpl_group_header,
             tpl_pending_contact,
@@ -140,13 +140,13 @@
                 },
 
                 toHTML () {
-                    const label_nickname = _converse.xhr_user_search_url ? __('Contact name') : __('Optional nickname');
+                    const label_nickname = _converse.xhr_user_search_url ? __('Contact name') : __('Nickname (optional)');
                     return tpl_add_contact_modal(_.extend(this.model.toJSON(), {
                         '_converse': _converse,
                         'heading_new_contact': __('Add a Contact'),
-                        'label_xmpp_address': __('XMPP Address'),
+                        'label_xmpp_address': __('Username'),
                         'label_nickname': label_nickname,
-                        'contact_placeholder': __('name@example.org'),
+                        'contact_placeholder': __('name@bitcoinlive'),
                         'label_add': __('Add'),
                     }));
                 },
@@ -642,7 +642,7 @@
 
                 filter (q, type) {
                     /* Filter the group's contacts based on the query "q".
-                     * 
+                     *
                      * If all contacts are filtered out (i.e. hidden), then the
                      * group must be filtered out as well.
                      */

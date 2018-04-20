@@ -9,13 +9,14 @@
 
     .chat-head-chatroom {
         background-color: $chatroom-head-color;
-        font-weight: 300;
+        font-weight: 600;
         border-bottom: 1px solid #eee;
-        margin-left: 2rem;
+        padding-left: 1em;
+        margin-top: 2em;
 
         hr.title-separator{
             width: 5rem;
-            border: 2.5px solid #0060DA;
+            border: 2.5px solid $blue;
             margin: 0;
             padding: 0 0 0 2rem;
             position: absolute;
@@ -48,6 +49,7 @@
         .chat-title {
             color: $chatroom-color-dark;
             .chatroom-name {
+                font-size: $font-size;
                 color: black;
                 text-transform: capitalize;
             }
@@ -81,14 +83,14 @@
 
             width: 100%;
             @media screen and (max-height: $mobile-landscape-height) {
-                height: $mobile-chat-height;
-                width: $mobile-chat-width;
-                height: 100vh;
+                //height: $mobile-chat-height;
+                //width: $mobile-chat-width;
+                //height: 100vh;
             }
             @media screen and (max-width: $mobile-portrait-length) {
-                height: $mobile-chat-height;
-                width: $mobile-chat-width;
-                height: 100vh;
+                //height: $mobile-chat-height;
+                //width: $mobile-chat-width;
+                //height: 100vh;
             }
             .chatroom-body {
                 flex-direction: row;
@@ -112,7 +114,12 @@
                     line-height: normal;
                     font-weight: 200;
                     &.badge {
-                        color: $chat-head-text-color;
+                        //color: $chat-head-text-color;
+                        background: transparent;
+                        color: #818181;
+                        text-align: right;
+                        display: block;
+                        border-bottom: 1px solid #f5f5f5;
                     }
                 }
                 .mentioned {
@@ -150,8 +157,8 @@
                     }
                     .chat-content {
                         height: 100%;
-                        padding: 0.5em 0;
-                        margin-left: 2rem;
+                        padding: 0.5em 1.25em 0 0;
+                        margin-left: 2em;
                     }
                     &.full {
                         min-width: 100%;
@@ -161,7 +168,7 @@
                     }
                 }
                 .occupants {
-                    display: flex;
+                    display: none;
                     flex-direction: column;
                     justify-content: space-between;
                     overflow-x: hidden;
@@ -299,11 +306,12 @@
 
         .sendXMPPMessage {
             .chat-toolbar {
-                background-color: #aaa;
-                border-top: 8px solid $chatroom-head-color;
-                color: $chatroom-head-color;
+                background-color: #efefef;
+                //border-top: 8px solid $chatroom-head-color;
+                color: #999;
+                border:none;
                 .fa, .fa:hover {
-                    color: $chatroom-head-color;
+                    color: #999;
                 }
             }
             .chat-textarea {

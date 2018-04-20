@@ -8,7 +8,7 @@
         @media screen and (max-width: $mobile-portrait-length) {
             border-radius: 0;
         }
-        bottom: $chatbox-hover-height;
+        //bottom: $chatbox-hover-height;
         //position: absolute;
 
         @media screen and (max-height: $mobile-landscape-height) {
@@ -84,7 +84,7 @@
 
         .chatbox-btn {
             color: white;
-            &.fa  {
+            &.fa {
                 color: white;
             }
             &:active {
@@ -122,7 +122,7 @@
             justify-content: space-between;
             background-color: $chat-head-color;
             //box-shadow: 1px 3px 5px 3px rgba(0, 0, 0, 0.4);
-            height: $chat-height;
+            //height: $chat-height;
             min-height: $chat-height/2;
             height: 100%;
             z-index: 1;
@@ -130,14 +130,14 @@
             width: 100%;
 
             @media screen and (max-height: $mobile-landscape-height) {
-                height: $mobile-chat-height;
-                width: $mobile-chat-width;
-                height: 100vh;
+                //height: $mobile-chat-height;
+                //width: $mobile-chat-width;
+                //height: 100vh;
             }
             @media screen and (max-width: $mobile-portrait-length) {
-                height: $mobile-chat-height;
-                width: $mobile-chat-width;
-                height: 100vh;
+                //height: $mobile-chat-height;
+                //width: $mobile-chat-width;
+                //height: 100vh;
             }
         }
         .chat-title {
@@ -194,6 +194,7 @@
                     font-style: italic;
                 }
                 &.chat-error {
+                    display: none;
                     color: $warning-color;
                     font-weight: 400;
                 }
@@ -225,17 +226,37 @@
                 }
 
                 .chat-msg-author {
-                    font-weight: 300;
+                    font-weight: 600;
+                    font-size: $font-size;
+                    &.chat-msg-me, &.chat-msg-them{
+                        color: #252525;
+                        line-height: 2em;
+                    }
                 }
                 .chat-msg-them {
-                    color: $message-them-color;
+                    color: #252525;
                 }
                 .chat-msg-me {
-                    color: $link-color;
+                    color: #252525;
+                }
+                &.chat-action {
+                    .chat-msg-author.chat-msg-me,
+                    .chat-msg-author.chat-msg-them,
+                    .chat-msg-content {
+                        color: $blue;
+                        font-style: normal;
+                        font-weight: 600;
+                        display: inline-block;
+                        font-size: 1em;
+
+                    }
                 }
                 .chat-msg-content {
                     max-width: 100%;
                     word-wrap: break-word;
+                    font-weight: 300;
+                    display: block;
+                    color: #999;
 
                     &.spoiler {
                         border-radius: $chatbox-border-radius;
@@ -271,12 +292,12 @@
         .chat-content {
             height: 100%;
             padding: 1em;
-            font-size: $font-size;
+            font-size: $font-size-small;
             color: $text-color;
             overflow-y: auto;
             border: 0;
             background-color: #ffffff;
-            line-height: 1.3em;
+            line-height: 1.25em;
 
             .toggle-spoiler:before {
                 padding-right: 0.25em;
@@ -331,8 +352,16 @@
                 width: 100%;
                 border: none;
                 min-height: $chat-textarea-height;
+                resize: none;
                 &.spoiler {
                     height: 42px;
+                }
+                &::placeholder {
+                    color: #999;
+                }
+                &:focus, &:active {
+                    outline: none;
+                    box-shadow: none;
                 }
             }
 
@@ -515,10 +544,11 @@
             }
         }
     }
+
 }
 
 @media screen and (max-width: 767px) {
-    #conversejs  {
+    #conversejs {
         > .row {
             flex-direction: row-reverse;
         }
@@ -547,7 +577,8 @@
                 .box-flyout {
                     left: 50px;
                     bottom: 0;
-                    height: 100vh;
+                    //height: 100vh;
+                    height: 100%;
                     box-shadow: none;
                 }
             }

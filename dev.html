@@ -50,10 +50,13 @@
     </section>
 </body>
 
+<div id="conversejs" class="fixed righty"></div>
+
 <script>
     require(['converse'], function (converse) {
-
         converse.initialize({
+            label_toggle:"test",
+            allow_logout:false,
             auto_login: true,
             auto_reconnect: true,
             allow_muc_invitations: false,

@@ -6,14 +6,15 @@
 
 $subdued-color: #A8ABA1 !default;
 $gray-color: #818479 !default;
-$dark-gray-color: #585B51!default;
+$dark-gray-color: #585B51 !default;
 $visitor-color: #A8ABA1 !default;
+//original blue = #0060DA
 
-$lightest-blue: #89B7CD;
-$light-blue: #578EA9;
-$blue: #387592;
-$dark-blue: #206485;
-$darkest-blue: #114C68;
+$blue: #0061DF;
+$lightest-blue: lighten($blue, 30%);
+$light-blue: lighten($blue, 15%);
+$dark-blue: darken($blue, 15%);
+$darkest-blue: darken($blue, 30%);
 
 $lightest-red: #FFB9A7;
 $light-red: #FF977C;
@@ -43,16 +44,16 @@ $global-background-color: $light-blue !default;
 $inverse-link-color: white !default;
 $link-shadow-color: #FAFAFA !default;
 $text-shadow-color: #FAFAFA !default;
-$text-color: #777 !default;
+$text-color: #454545 !default;
 $light-text-color: #A8ABA1 !default;
 $border-color: #CCC !default;
 $icon-color: $blue !default;
 $save-button-color: $green !default;
-$chat-textarea-height: 60px !default;
+$chat-textarea-height: 90px !default;
 $send-button-height: 27px !default;
 $send-button-margin: 3px !default;
 
-$message-them-color: #333 !default;
+$message-them-color: $dark-blue !default;
 
 $roster-height: 194px !default;
 $roster-item-height: 60px !default;
@@ -92,23 +93,24 @@ $chatbox-hover-height: 1em !default;
 $mobile_landscape_height: 450px !default;
 $mobile_portrait_length: 480px !default;
 
-$font-size-tiny: 10px !default;
-$font-size-small: 12px !default;
-$font-size: 13.5px !default;
-$font-size-large: 16px !default;
-$font-size-huge: 20px !default;
+$font-size-tiny: 0.7em !default;
+$font-size-small: 0.85em !default;
+$font-size: 15px !default;
+$font-size-large: 1.25em !default;
+$font-size-huge: 1.5em !default;
 $legend-font-size: 16px !default;
 
 $toolbar-color: $greenish-white !default;
 
 $emoji-picker-height: 100px !default;
 
-$line-height-small:  14px !default;
-$line-height:  16px !default;
-$line-height-large:  20px !default;
+$line-height-small: 1em !default;
+$line-height: 1.25em !default;
+$line-height-large: 1.5em !default;
+$line-height-huge: 2.5em !default;
 
-$container-width: 25rem !default;
-$controlbox-width: 25rem !default;
+$container-width: 18.5em !default;
+$controlbox-width: 18.5em !default;
 $chat-width: 100% !default;
 $chat-height: 450px !default;
 $chat-gutter: 0.5em !default;

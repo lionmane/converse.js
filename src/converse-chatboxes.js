@@ -16,7 +16,7 @@
 }(this, function (converse, emojione, filesize, tpl_chatboxes) {
     "use strict";
 
-    const { $msg, Backbone, Promise, Strophe, b64_sha1, moment, sizzle, utils, _ } = converse.env;
+    const {$msg, Backbone, Promise, Strophe, b64_sha1, moment, sizzle, utils, _} = converse.env;
     const u = converse.env.utils;
 
 
@@ -28,19 +28,19 @@
             // relevant objects or classes.
 
             disconnect: function () {
-                const { _converse } = this.__super__;
+                const {_converse} = this.__super__;
                 _converse.chatboxviews.closeAllChatBoxes();
                 return this.__super__.disconnect.apply(this, arguments);
             },
 
             logOut: function () {
-                const { _converse } = this.__super__;
+                const {_converse} = this.__super__;
                 _converse.chatboxviews.closeAllChatBoxes();
                 return this.__super__.logOut.apply(this, arguments);
             },
 
             initStatus: function (reconnecting) {
-                const { _converse } = this.__super__;
+                const {_converse} = this.__super__;
                 if (!reconnecting) {
                     _converse.chatboxviews.closeAllChatBoxes();
                 }
@@ -48,19 +48,19 @@
             }
         },
 
-        initialize () {
+        initialize() {
             /* The initialize function gets called as soon as the plugin is
              * loaded by converse.js's plugin machinery.
              */
-            const { _converse } = this,
-                { __ } = _converse;
+            const {_converse} = this,
+                {__} = _converse;
 
             _converse.api.promises.add([
                 'chatBoxesFetched',
                 'chatBoxesInitialized'
             ]);
 
-            function openChat (jid) {
+            function openChat(jid) {
                 if (!utils.isValidJID(jid)) {
                     return _converse.log(
                         `Invalid JID "${jid}" provided in URL fragment`,
@@ -74,19 +74,20 @@
                     _converse.api.chats.open(jid);
                 });
             }
+
             _converse.router.route('converse/chat?jid=:jid', openChat);
 
 
             _converse.Message = Backbone.Model.extend({
 
-                defaults () {
+                defaults() {
                     return {
                         'msgid': _converse.connection.getUniqueId(),
                         'time': moment().format()
                     };
                 },
 
-                initialize () {
+                initialize() {
                     if (this.get('file')) {
                         this.on('change:put', this.uploadFile, this);
 
@@ -96,7 +97,7 @@
                     }
                 },
 
-                sendSlotRequestStanza () {
+                sendSlotRequestStanza() {
                     /* Send out an IQ stanza to request a file upload slot.
                      *
                      * https://xmpp.org/extensions/xep-0363.html#request
@@ -117,12 +118,12 @@
                     });
                 },
 
-                getRequestSlotURL () {
+                getRequestSlotURL() {
                     this.sendSlotRequestStanza().then((stanza) => {
                         const slot = stanza.querySelector('slot');
                         if (slot) {
                             this.save({
-                                'get':  slot.querySelector('get').getAttribute('url'),
+                                'get': slot.querySelector('get').getAttribute('url'),
                                 'put': slot.querySelector('put').getAttribute('url'),
                             });
                         } else {
@@ -140,7 +141,7 @@
                     });
                 },
 
-                uploadFile () {
+                uploadFile() {
                     const xhr = new XMLHttpRequest();
                     xhr.onreadystatechange = () => {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -195,7 +196,7 @@
                     'url': ''
                 },
 
-                initialize () {
+                initialize() {
                     this.messages = new _converse.Messages();
                     this.messages.browserStorage = new Backbone.BrowserStorage[_converse.message_storage](
                         b64_sha1(`converse.messages${this.get('jid')}${_converse.bare_jid}`));
@@ -210,13 +211,13 @@
                     this.save({
                         // The chat_state will be set to ACTIVE once the chat box is opened
                         // and we listen for change:chat_state, so shouldn't set it to ACTIVE here.
-                        'box_id' : b64_sha1(this.get('jid')),
+                        'box_id': b64_sha1(this.get('jid')),
                         'time_opened': this.get('time_opened') || moment().valueOf(),
-                        'user_id' : Strophe.getNodeFromJid(this.get('jid'))
+                        'user_id': Strophe.getNodeFromJid(this.get('jid'))
                     });
                 },
 
-                createMessageStanza (message) {
+                createMessageStanza(message) {
                     /* Given a _converse.Message Backbone.Model, return the XML
                      * stanza that represents it.
                      *
@@ -224,18 +225,18 @@
                      *    (Object) message - The Backbone.Model representing the message
                      */
                     const stanza = $msg({
-                            'from': _converse.connection.jid,
-                            'to': this.get('jid'),
-                            'type': this.get('message_type'),
-                            'id': message.get('msgid')
-                        }).c('body').t(message.get('message')).up()
-                          .c(_converse.ACTIVE, {'xmlns': Strophe.NS.CHATSTATES}).up();
+                        'from': _converse.connection.jid,
+                        'to': this.get('jid'),
+                        'type': this.get('message_type'),
+                        'id': message.get('msgid')
+                    }).c('body').t(message.get('message')).up()
+                        .c(_converse.ACTIVE, {'xmlns': Strophe.NS.CHATSTATES}).up();
 
                     if (message.get('is_spoiler')) {
                         if (message.get('spoiler_hint')) {
-                            stanza.c('spoiler', {'xmlns': Strophe.NS.SPOILER }, message.get('spoiler_hint')).up();
+                            stanza.c('spoiler', {'xmlns': Strophe.NS.SPOILER}, message.get('spoiler_hint')).up();
                         } else {
-                            stanza.c('spoiler', {'xmlns': Strophe.NS.SPOILER }).up();
+                            stanza.c('spoiler', {'xmlns': Strophe.NS.SPOILER}).up();
                         }
                     }
                     if (message.get('file')) {
@@ -244,7 +245,7 @@
                     return stanza;
                 },
 
-                sendMessageStanza (message) {
+                sendMessageStanza(message) {
                     const messageStanza = this.createMessageStanza(message);
                     _converse.connection.send(messageStanza);
                     if (_converse.forward_messages) {
@@ -256,15 +257,15 @@
                                 'id': message.get('msgid')
                             }).c('forwarded', {'xmlns': Strophe.NS.FORWARD})
                                 .c('delay', {
-                                        'xmns': Strophe.NS.DELAY,
-                                        'stamp': moment().format()
+                                    'xmns': Strophe.NS.DELAY,
+                                    'stamp': moment().format()
                                 }).up()
-                              .cnode(messageStanza.tree())
+                                .cnode(messageStanza.tree())
                         );
                     }
                 },
 
-                getOutgoingMessageAttributes (text, spoiler_hint) {
+                getOutgoingMessageAttributes(text, spoiler_hint) {
                     const fullname = _converse.xmppstatus.get('fullname'),
                         is_spoiler = this.get('composing_spoiler');
 
@@ -278,7 +279,7 @@
                     };
                 },
 
-                sendMessage (attrs) {
+                sendMessage(attrs) {
                     /* Responsible for sending off a text message.
                      *
                      *  Parameters:
@@ -287,12 +288,17 @@
                     this.sendMessageStanza(this.messages.create(attrs));
                 },
 
-                sendFiles (files) {
+                sendFiles(files) {
                     _converse.api.disco.supports(Strophe.NS.HTTPUPLOAD, _converse.domain).then((result) => {
                         const item = result.pop(),
-                              data = item.dataforms.where({'FORM_TYPE': {'value': Strophe.NS.HTTPUPLOAD, 'type': "hidden"}}).pop(),
-                              max_file_size = window.parseInt(_.get(data, 'attributes.max-file-size.value')),
-                              slot_request_url = _.get(item, 'id');
+                            data = item.dataforms.where({
+                                'FORM_TYPE': {
+                                    'value': Strophe.NS.HTTPUPLOAD,
+                                    'type': "hidden"
+                                }
+                            }).pop(),
+                            max_file_size = window.parseInt(_.get(data, 'attributes.max-file-size.value')),
+                            slot_request_url = _.get(item, 'id');
 
                         if (!slot_request_url) {
                             this.messages.create({
@@ -312,25 +318,25 @@
                                 this.messages.create(
                                     _.extend(
                                         this.getOutgoingMessageAttributes(), {
-                                        'file': file,
-                                        'progress': 0,
-                                        'slot_request_url': slot_request_url,
-                                        'type': this.get('message_type'),
-                                    })
+                                            'file': file,
+                                            'progress': 0,
+                                            'slot_request_url': slot_request_url,
+                                            'type': this.get('message_type'),
+                                        })
                                 );
                             }
                         });
                     }).catch(_.partial(_converse.log, _, Strophe.LogLevel.FATAL));
                 },
 
-                getMessageBody (message) {
+                getMessageBody(message) {
                     const type = message.getAttribute('type');
                     return (type === 'error') ?
                         _.propertyOf(message.querySelector('error text'))('textContent') :
-                            _.propertyOf(message.querySelector('body'))('textContent');
+                        _.propertyOf(message.querySelector('body'))('textContent');
                 },
 
-                getMessageAttributesFromStanza (message, delay, original_stanza) {
+                getMessageAttributesFromStanza(message, delay, original_stanza) {
                     /* Parses a passed in message stanza and returns an object
                      * of attributes.
                      *
@@ -342,8 +348,8 @@
                      *      that contains the message stanza, if it was
                      *      contained, otherwise it's the message stanza itself.
                      */
-                    const { _converse } = this.__super__,
-                          { __ } = _converse;
+                    const {_converse} = this.__super__,
+                        {__} = _converse;
 
                     delay = delay || message.querySelector('delay');
                     const type = message.getAttribute('type'),
@@ -396,14 +402,14 @@
                     return attrs;
                 },
 
-                createMessage (message, delay, original_stanza) {
+                createMessage(message, delay, original_stanza) {
                     /* Create a Backbone.Message object inside this chat box
                      * based on the identified message stanza.
                      */
                     return this.messages.create(this.getMessageAttributesFromStanza.apply(this, arguments));
                 },
 
-                newMessageWillBeHidden () {
+                newMessageWillBeHidden() {
                     /* Returns a boolean to indicate whether a newly received
                      * message will be visible to the user or not.
                      */
@@ -413,7 +419,7 @@
                         _converse.windowState === 'hidden';
                 },
 
-                incrementUnreadMsgCounter (stanza) {
+                incrementUnreadMsgCounter(stanza) {
                     /* Given a newly received message, update the unread counter if
                      * necessary.
                      */
@@ -430,7 +436,7 @@
                     this.save({'num_unread': 0});
                 },
 
-                isScrolledUp () {
+                isScrolledUp() {
                     return this.get('scrolled', true);
                 }
             });
@@ -439,11 +445,11 @@
             _converse.ChatBoxes = Backbone.Collection.extend({
                 comparator: 'time_opened',
 
-                model (attrs, options) {
+                model(attrs, options) {
                     return new _converse.ChatBox(attrs, options);
                 },
 
-                registerMessageHandler () {
+                registerMessageHandler() {
                     _converse.connection.addHandler(
                         this.onMessage.bind(this), null, 'message', 'chat'
                     );
@@ -452,11 +458,11 @@
                     );
                 },
 
-                chatBoxMayBeShown (chatbox) {
+                chatBoxMayBeShown(chatbox) {
                     return true;
                 },
 
-                onChatBoxesFetched (collection) {
+                onChatBoxesFetched(collection) {
                     /* Show chat boxes upon receiving them from sessionStorage */
                     collection.each((chatbox) => {
                         if (this.chatBoxMayBeShown(chatbox)) {
@@ -466,7 +472,7 @@
                     _converse.emit('chatBoxesFetched');
                 },
 
-                onConnected () {
+                onConnected() {
                     this.browserStorage = new Backbone.BrowserStorage[_converse.storage](
                         b64_sha1(`converse.chatboxes-${_converse.bare_jid}`));
                     this.registerMessageHandler();
@@ -476,11 +482,11 @@
                     });
                 },
 
-                onErrorMessage (message) {
+                onErrorMessage(message) {
                     /* Handler method for all incoming error message stanzas
                     */
                     // TODO: we can likely just reuse "onMessage" below
-                    const from_jid =  Strophe.getBareJidFromJid(message.getAttribute('from'));
+                    const from_jid = Strophe.getBareJidFromJid(message.getAttribute('from'));
                     if (utils.isSameBareJID(from_jid, _converse.bare_jid)) {
                         return true;
                     }
@@ -493,7 +499,7 @@
                     return true;
                 },
 
-                onMessage (message) {
+                onMessage(message) {
                     /* Handler method for all incoming single-user chat "message"
                      * stanzas.
                      *
@@ -557,7 +563,7 @@
                         'fullname': _.get(_converse.api.contacts.get(contact_jid), 'attributes.fullname')
                     }
                     const chatbox = this.getChatBox(contact_jid, attrs, !_.isNull(message.querySelector('body'))),
-                          msgid = message.getAttribute('id');
+                        msgid = message.getAttribute('id');
 
                     if (chatbox) {
                         const messages = msgid && chatbox.messages.findWhere({msgid}) || [];
@@ -572,7 +578,7 @@
                     return true;
                 },
 
-                getChatBox (jid, attrs={}, create) {
+                getChatBox(jid, attrs = {}, create) {
                     /* Returns a chat box or optionally return a newly
                      * created one if one doesn't exist.
                      *
@@ -588,11 +594,11 @@
                     }
                     jid = Strophe.getBareJidFromJid(jid.toLowerCase());
 
-                    let  chatbox = this.get(Strophe.getBareJidFromJid(jid));
+                    let chatbox = this.get(Strophe.getBareJidFromJid(jid));
                     if (!chatbox && create) {
                         _.extend(attrs, {'jid': jid, 'id': jid});
                         chatbox = this.create(attrs, {
-                            'error' (model, response) {
+                            'error'(model, response) {
                                 _converse.log(response.responseText);
                             }
                         });
@@ -603,7 +609,7 @@
 
             _converse.ChatBoxViews = Backbone.Overview.extend({
 
-                _ensureElement () {
+                _ensureElement() {
                     /* Override method from backbone.js
                      * If the #conversejs element doesn't exist, create it.
                      */
@@ -630,13 +636,13 @@
                     }
                 },
 
-                initialize () {
+                initialize() {
                     this.model.on("add", this.onChatBoxAdded, this);
                     this.model.on("destroy", this.removeChat, this);
                     this.render();
                 },
 
-                render () {
+                render() {
                     try {
                         this.el.innerHTML = tpl_chatboxes();
                     } catch (e) {
@@ -646,40 +652,44 @@
                     this.row_el = this.el.querySelector('.row');
                 },
 
-                insertRowColumn (el) {
+                insertRowColumn(el) {
                     /* Add a new DOM element (likely a chat box) into the
                      * the row managed by this overview.
                      */
                     this.row_el.insertAdjacentElement('afterBegin', el);
                 },
 
-                onChatBoxAdded (item) {
+                onChatBoxAdded(item) {
                     // Views aren't created here, since the core code doesn't
                     // contain any views. Instead, they're created in overrides in
                     // plugins, such as in converse-chatview.js and converse-muc.js
                     return this.get(item.get('id'));
                 },
 
-                removeChat (item) {
+                removeChat(item) {
                     this.remove(item.get('id'));
                 },
 
-                closeAllChatBoxes () {
+                closeAllChatBoxes() {
                     /* This method gets overridden in src/converse-controlbox.js if
                     * the controlbox plugin is active.
                     */
-                    this.each(function (view) { view.close(); });
+                    this.each(function (view) {
+                        view.close();
+                    });
                     return this;
                 },
 
-                chatBoxMayBeShown (chatbox) {
+                chatBoxMayBeShown(chatbox) {
                     return this.model.chatBoxMayBeShown(chatbox);
                 }
             });
 
             // TODO: move to converse-chatboxviews.js and use there in the API
             _converse.getViewForChatBox = function (chatbox) {
-                if (!chatbox) { return; }
+                if (!chatbox) {
+                    return;
+                }
                 return _converse.chatboxviews.get(chatbox.get('id'));
             };
 
@@ -710,7 +720,7 @@
             /************************ BEGIN API ************************/
             _.extend(_converse.api, {
                 'chats': {
-                    'create' (jids, attrs) {
+                    'create'(jids, attrs) {
                         if (_.isUndefined(jids)) {
                             _converse.log(
                                 "chats.create: You need to provide at least one JID",
@@ -725,7 +735,7 @@
                             }
                             const chatbox = _converse.chatboxes.getChatBox(jids, attrs, true);
                             if (_.isNil(chatbox)) {
-                                _converse.log("Could not open chatbox for JID: "+jids, Strophe.LogLevel.ERROR);
+                                _converse.log("Could not open chatbox for JID: " + jids, Strophe.LogLevel.ERROR);
                                 return;
                             }
                             return chatbox;
@@ -735,7 +745,7 @@
                             return _converse.chatboxes.getChatBox(jid, attrs, true).trigger('show');
                         });
                     },
-                    'open' (jids, attrs) {
+                    'open'(jids, attrs) {
                         if (_.isUndefined(jids)) {
                             _converse.log("chats.open: You need to provide at least one JID", Strophe.LogLevel.ERROR);
                             return null;
@@ -746,7 +756,7 @@
                         }
                         return _.map(jids, (jid) => _converse.api.chats.create(jid, attrs).trigger('show'));
                     },
-                    'get' (jids) {
+                    'get'(jids) {
                         if (_.isUndefined(jids)) {
                             const result = [];
                             _converse.chatboxes.each(function (chatbox) {

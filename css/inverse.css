@@ -1,22 +1,36 @@
 /*
 Error: Undefined variable: "$container-width".
-        on line 53 of sass/_core.scss
+        on line 83 of sass/_core.scss
         from line 39 of sass/inverse/inverse.scss
 
-48: @import "../bookmarks";
-49: @import "bookmarks";
-50: @import "../chatrooms";
-51: @import "chatrooms";
-52: @import "../headline";
-53: @import "headline";
-54: @import "../awesomplete"
-
 Backtrace:
-sass/_core.scss:53
+sass/_core.scss:83
 sass/inverse/inverse.scss:39
 /Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/node.rb:50:in `perform'
 /Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:135:in `with_frame'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `with_base'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:444:in `map'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:135:in `with_frame'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `with_base'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:444:in `map'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
 /Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
 /Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
 /Users/lion-mane/Work/conversejs-lionmane/.bundle/ruby/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `block in with_base'
@@ -80,4 +94,4 @@ sass/inverse/inverse.scss:39
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$container-width\".\A         on line 53 of sass/_core.scss\A         from line 39 of sass/inverse/inverse.scss\A \A 48: @import \"../bookmarks\";\A 49: @import \"bookmarks\";\A 50: @import \"../chatrooms\";\A 51: @import \"chatrooms\";\A 52: @import \"../headline\";\A 53: @import \"headline\";\A 54: @import \"../awesomplete\""; }
+  content: "Error: Undefined variable: \"$container-width\".\A         on line 83 of sass/_core.scss\A         from line 39 of sass/inverse/inverse.scss"; }

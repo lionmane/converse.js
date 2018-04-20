@@ -298,7 +298,7 @@
                     );
                     this.el.querySelector('.chat-toolbar').innerHTML = toolbar(options);
                     this.addSpoilerButton(options);
-                    this.addFileUploadButton();
+                    //this.addFileUploadButton();
                     this.insertEmojiPicker();
                     return this;
                 },

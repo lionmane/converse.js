@@ -258,7 +258,7 @@
                 el.querySelector('span.spinner').remove();
                 el.querySelector('a.room-info').classList.add('selected');
                 el.insertAdjacentHTML(
-                    'beforeEnd', 
+                    'beforeEnd',
                     tpl_room_description({
                         'jid': stanza.getAttribute('from'),
                         'desc': _.get(_.head(sizzle('field[var="muc#roominfo_description"] value', stanza)), 'textContent'),
@@ -309,7 +309,7 @@
                 }
             }
 
-            
+
             _converse.ListChatRoomsModal = _converse.BootstrapModal.extend({
 
                 events: {
@@ -572,7 +572,7 @@
                     if (_.isNull(this.el.querySelector('.chat-area'))) {
                         const container_el = this.el.querySelector('.chatroom-body');
                         container_el.innerHTML = tpl_chatarea({
-                            'label_message': __('Message'),
+                            'label_message': __('Type your message here'),
                             'label_send': __('Send'),
                             'show_send_button': _converse.show_send_button,
                             'show_toolbar': _converse.show_toolbar,
