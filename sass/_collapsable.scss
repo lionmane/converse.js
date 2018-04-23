@@ -1,0 +1,53 @@
+@mixin converse-tab() {
+    display: block;
+    position: absolute;
+    top: 30%;
+    width: 3rem;
+    height: 5rem;
+    background: white;
+    line-height: 3rem;
+    padding: 1rem;
+    :hover {
+        color: $blue;
+    }
+}
+
+$collapsed-width: -#{$container-width - 0.2em};
+
+#conversejs.fixed {
+    &.collapsable {
+        width: $container-width;
+        transition: left 0.3s, right 0.3s, box-shadow 0.3s;
+
+        &.lefty {
+            right: unset;
+            .converse-collapse-toggle::after {
+                @include converse-tab;
+                right: -3rem;
+                content: "<";
+            }
+            &.collapsed{
+                left: $collapsed-width;
+                .converse-collapse-toggle::before {
+                    content: ">";
+                }
+            }
+        }
+
+        &.righty {
+            left: unset;
+            .converse-collapse-toggle::before {
+                @include converse-tab;
+                left: -3rem;
+                content: ">";
+            }
+            &.collapsed{
+                right: $collapsed-width;
+                .converse-collapse-toggle::before {
+                    content: "<";
+                }
+            }
+        }
+    }
+
+}

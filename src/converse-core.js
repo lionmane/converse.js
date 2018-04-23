@@ -73,6 +73,7 @@
         'converse-chatboxes',
         'converse-chatview',
         'converse-controlbox',
+        'converse-collapse',
         'converse-core',
         'converse-disco',
         'converse-dragresize',

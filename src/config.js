@@ -92,6 +92,7 @@ require.config({
         "converse-rosterview":      "src/converse-rosterview",
         "converse-singleton":       "src/converse-singleton",
         "converse-vcard":           "src/converse-vcard",
+        "converse-collapse":        "src/converse-collapse",
 
         // Off-the-record-encryption
         // "bigint":               "node_modules/otr/build/dep/bigint",

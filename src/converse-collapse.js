@@ -5,23 +5,33 @@
     const {utils, Strophe, _} = converse.env;
 
     converse.plugins.add('converse-collapse', {
-        initialize (element) {
+        dependencies: [
+            'converse-chatboxes'
+        ],
+        initialize() {
 
-            const { _converse } = this;
-            const { __ } = _converse;
+            const {_converse} = this;
+            const {__} = _converse;
 
-            console.log(_converse);
+            const element = _converse.root.querySelector('#conversejs');
 
-            if (element.classList.contains("lefty") || element.classList.contains("righty")) {
-                const expandButton = document.createElement("a");
-                expandButton.setAttribute('href', '#');
-                expandButton.classList.add("converse-collapse");
-                expandButton.addEventListener('click', function () {
-                    element.classList.toggle('collapsed');
-                });
-                console.log(element);
-                element.append(expandButton);
-            }
+            element.classList.add("collapsable");
+            const button = this.makeButton(element);
+
+            setTimeout(function(){
+                element.append(button);
+            },100);
+
+
+        },
+        makeButton(element){
+            const button = document.createElement("a");
+            button.setAttribute('href', '#');
+            button.classList.add("converse-collapse-toggle");
+            button.addEventListener('click', function () {
+                element.classList.toggle('collapsed');
+            });
+            return button;
         }
     });
 

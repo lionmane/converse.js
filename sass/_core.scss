@@ -62,44 +62,6 @@ body.reset {
         bottom: 0;
         left: 0;
         right: 0;
-        .converse-collapse{
-
-        }
-        @mixin converse-tab() {
-            display: block;
-            position: absolute;
-            top: 30%;
-            width: 3rem;
-            height: 5rem;
-            background: white;
-            line-height: 3rem;
-            padding: 1rem;
-            :hover{
-                color: $blue;
-            }
-        }
-
-        &.lefty, &.righty {
-            width: $container-width;
-        }
-
-        &.lefty {
-            right: unset;
-            &::after {
-                @include converse-tab;
-                right: -3rem;
-                content: ">";
-            }
-        }
-
-        &.righty {
-            left: unset;
-            &::before {
-                @include converse-tab;
-                left: -3rem;
-                content: "<";
-            }
-        }
     }
 
     .converse-chatboxes {

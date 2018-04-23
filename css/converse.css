@@ -6788,38 +6788,6 @@ body.reset {
     bottom: 0;
     left: 0;
     right: 0; }
-    #conversejs.fixed.lefty, #conversejs.fixed.righty {
-      width: 18.5em; }
-    #conversejs.fixed.lefty {
-      right: unset; }
-      #conversejs.fixed.lefty::after {
-        display: block;
-        position: absolute;
-        top: 30%;
-        width: 3rem;
-        height: 5rem;
-        background: white;
-        line-height: 3rem;
-        padding: 1rem;
-        right: -3rem;
-        content: ">"; }
-        #conversejs.fixed.lefty::after :hover {
-          color: #0061DF; }
-    #conversejs.fixed.righty {
-      left: unset; }
-      #conversejs.fixed.righty::before {
-        display: block;
-        position: absolute;
-        top: 30%;
-        width: 3rem;
-        height: 5rem;
-        background: white;
-        line-height: 3rem;
-        padding: 1rem;
-        left: -3rem;
-        content: "<"; }
-        #conversejs.fixed.righty::before :hover {
-          color: #0061DF; }
   #conversejs .btn {
     font-size: 15px; }
   #conversejs ::-webkit-input-placeholder {
@@ -8752,5 +8720,47 @@ body.reset {
 #conversejs div.awesomplete li[aria-selected="true"] mark {
   background: #3d6b00;
   color: inherit; }
+
+#conversejs.fixed.collapsable {
+  width: 18.5em;
+  transition: left 0.3s, right 0.3s, box-shadow 0.3s; }
+  #conversejs.fixed.collapsable.lefty {
+    right: unset; }
+    #conversejs.fixed.collapsable.lefty .converse-collapse-toggle::after {
+      display: block;
+      position: absolute;
+      top: 30%;
+      width: 3rem;
+      height: 5rem;
+      background: white;
+      line-height: 3rem;
+      padding: 1rem;
+      right: -3rem;
+      content: "<"; }
+      #conversejs.fixed.collapsable.lefty .converse-collapse-toggle::after :hover {
+        color: #0061DF; }
+    #conversejs.fixed.collapsable.lefty.collapsed {
+      left: -18.3em; }
+      #conversejs.fixed.collapsable.lefty.collapsed .converse-collapse-toggle::before {
+        content: ">"; }
+  #conversejs.fixed.collapsable.righty {
+    left: unset; }
+    #conversejs.fixed.collapsable.righty .converse-collapse-toggle::before {
+      display: block;
+      position: absolute;
+      top: 30%;
+      width: 3rem;
+      height: 5rem;
+      background: white;
+      line-height: 3rem;
+      padding: 1rem;
+      left: -3rem;
+      content: ">"; }
+      #conversejs.fixed.collapsable.righty .converse-collapse-toggle::before :hover {
+        color: #0061DF; }
+    #conversejs.fixed.collapsable.righty.collapsed {
+      right: -18.3em; }
+      #conversejs.fixed.collapsable.righty.collapsed .converse-collapse-toggle::before {
+        content: "<"; }
 
 /*# sourceMappingURL=converse.css.map */

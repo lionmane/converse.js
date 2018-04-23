@@ -7,6 +7,7 @@ if (typeof define !== 'undefined') {
          * --------------------
          * Any of the following components may be removed if they're not needed.
          */
+        "converse-collapse",
         //"converse-bookmarks",       // XEP-0048 Bookmarks
         //"converse-chatview",        // Renders standalone chat boxes for single user chat
         //"converse-controlbox",      // The control box
